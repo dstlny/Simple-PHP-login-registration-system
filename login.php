@@ -1,3 +1,7 @@
+/*
+* Created by dstlny on 9/12/2018
+*/
+
 <?php
 $_SESSION['errors'] = $error_check;
 if (isset($_POST['subLogin'])) {
