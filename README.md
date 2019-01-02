@@ -8,3 +8,5 @@
 - Core CRUD funcitionality.
 - Easily customisable layout.
 - Languages used: PHP, CSS, JS, HTML, SQL.
+
+Created: 21/11/2018 by dstlny
