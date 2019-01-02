@@ -6,3 +6,4 @@
 - Favourites System (Normal users only, based on a session array).
 - Easily maintainable.
 - Core CRUD funcitionality.
+- Easily customisable layout.
