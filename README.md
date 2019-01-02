@@ -7,3 +7,4 @@
 - Easily maintainable.
 - Core CRUD funcitionality.
 - Easily customisable layout.
+- Languages used: PHP, CSS, JS, HTML, SQL.
