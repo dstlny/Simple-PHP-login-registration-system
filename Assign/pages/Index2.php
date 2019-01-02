@@ -1,7 +1,3 @@
-/*
-* Copyright (c) 2019 Luke Elam
-*/
-
 <?php
 require_once  'header.php';
 if(isset($_GET['id'])){
