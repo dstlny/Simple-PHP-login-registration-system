@@ -1,10 +1,7 @@
 <?php
 require_once  '../pages/header.php';
-if(!isset($_SESSION['adminBool'])){
-    header ('location: ../pages/Index2.php');
-} else{
 
-}
+(!isset($_SESSION['adminBool'])) ? header ('location: ../pages/Index2.php') : null;
 ?>
 
 <script> history.replaceState({}, null, "../requires/adminPanel.php"); </script>
