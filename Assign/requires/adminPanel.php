@@ -1,5 +1,5 @@
 <?php
-if(isset($_SESSION['adminBool']) && $_SESSION['adminBool'] == TRUE){
+if(!isset($_SESSION['adminBool']) && $_SESSION['adminBool'] == FALSE){
     header ('location: ../pages/Index2.php');
 }
 ?>
