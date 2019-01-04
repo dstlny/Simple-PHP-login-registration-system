@@ -1,15 +1,9 @@
 <?php
-require_once  '../pages/dbcon/init.php';
-if(empty($_SESSION['fav'])){
-   header("Location: ../pages/Index2.php");
-}
+require_once  '../pages/header.php';
+empty($_SESSION['fav']) ? header('location: ../pages/Index2.php') : null;
 ?>
 
 <script> history.replaceState({}, null, "../requires/favPanel.php"); </script>
-
-<?php
-require_once  '../pages/header.php';
-?>
 
 <style>
 
@@ -138,21 +132,20 @@ require_once  '../pages/header.php';
               <div class="product-container scrollable" style="text-align: center; border: 2px solid gray; margin-top: 30px; margin-left: 30px; margin-right: 30px; padding-left: auto; padding-right:auto;">
               <?php
                     
+                    //Allows user to delete favourites they no-longer want.
                     if($_GET['id']){
                         $index = array_search($_GET['id'], $_SESSION['fav']);
                         array_splice($_SESSION['fav'], $index, 1);
                         error_reporting(0);
                         header("Location: ".$_SERVER['PHP_SELF']);
                     }
-                    
-                    if(empty($_SESSION['fav'])){
-                        echo '<meta http-equiv="refresh" content="0;url=../pages/Index2.php">';
-                    }
-                    
+                   
+                    //Clears all favourites, redirects to Index page.
                     if(isset($_GET['ClearAll'])){
                         $_SESSION['fav'] = array();
                         echo '<meta http-equiv="refresh" content="0;url=../pages/Index2.php">';
                     }
+                 
                     echo '<table>';
                     echo '<tr><th>Product Name</th><th>Product Price</th><th>Product Image</th><th>Product Category</th><th>Product Description</th><th><a style="color: black;" href="?ClearAll">Delete All</a></th></tr>';
                     foreach($_SESSION['fav'] as $key=>$value){
