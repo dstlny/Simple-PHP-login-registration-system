@@ -1,0 +1,46 @@
+## webAdmins table
+
+CREATE TABLE IF NOT EXISTS `webAdmins` (
+  `adminID` int(11) NOT NULL AUTO_INCREMENT,
+  `adminEmail` varchar(256) NOT NULL,
+  `adminUserName` varchar(256) NOT NULL,
+  `adminPassword` varchar(512) NOT NULL,
+  PRIMARY KEY (`adminID`)
+)
+
+INSERT INTO `webAdmins` VALUES
+(1, 'admin@website.com', 'admin01', '244709fd04967666579bbe48fa32a07585a46420af59fe3aaeba443540b7143362eefea1902104874e311a9c673517a91765179efb7dc3afacaf61451cf0a94aef79fe33f49cc0a05aaade84ef745f2ea660871cfba838c0df9d7de8057bd98f57020f2a6e2a4d3900fd5f83dcff7c2fdbe5369c9b709ccf1f21dd392beaaa720934207482f6df5694c8a85c2183ceeecc030e391b7e83543dafeaabdd77898d072e32373faa4dc25407c7cfdecfe234');
+pass for admin01 -> default01.
+
+## webProducts table
+
+CREATE TABLE IF NOT EXISTS `webProducts` (
+  `ProductID` int(11) NOT NULL AUTO_INCREMENT,
+  `ProductName` varchar(256) NOT NULL,
+  `ProductCategory` varchar(1000) NOT NULL,
+  `ProductDescription` varchar(3000) NOT NULL,
+  `ProductPrice` double NOT NULL,
+  `ProductImage` varchar(256) NOT NULL,
+  PRIMARY KEY (`ProductID`)
+)
+
+INSERT INTO `webProducts` VALUES
+(1, 'Nvidia GTX 1060 6GB', 'NVIDIAGPU', 'The GeForce&trade;  GTX 1060 graphics card is full of innovative new gaming technologies that makes it an excellent choice for 1080p gaming while also opening the door to virtual reality. NVIDIA''s GP104 chip with a frame buffer of up to 6GB of GDDR5 at 8Gbps speed and with a boost clock of 1708MHz this GPU delivers brilliant gaming performance.', 250.99, 'GTX1060.jpg'),
+
+## webUser table
+
+CREATE TABLE IF NOT EXISTS `webUser` (
+  `userID` int(11) NOT NULL AUTO_INCREMENT,
+  `userName` varchar(256) NOT NULL,
+  `userPass` varchar(512) NOT NULL,
+  `userFirstName` varchar(256) NOT NULL,
+  `userSecondName` varchar(256) NOT NULL,
+  `userEmail` varchar(256) NOT NULL,
+  `userAge` varchar(256) NOT NULL,
+  PRIMARY KEY (`userID`),
+  KEY `userID` (`userID`)
+)
+
+INSERT INTO `webUser` (`userID`, `userName`, `userPass`, `userFirstName`, `userSecondName`, `userEmail`, `userAge`) VALUES
+(1, 'User01', '244709fd04967666579bbe48fa32a07585a46420af59fe3aaeba443540b7143362eefea1902104874e311a9c673517a91765179efb7dc3afacaf61451cf0a94aef79fe33f49cc0a05aaade84ef745f2ea660871cfba838c0df9d7de8057bd98f57020f2a6e2a4d3900fd5f83dcff7c2fdbe5369c9b709ccf1f21dd392beaaa720934207482f6df5694c8a85c2183ceeecc030e391b7e83543dafeaabdd77898d072e32373faa4dc25407c7cfdecfe234', 'User', '01', 'user01@email.co.uk', '30-60');
+pass for User01 -> default01.
