@@ -6,10 +6,6 @@ require_once  '../pages/header.php';
 
 <script> history.replaceState({}, null, "../requires/adminPanel.php"); </script>
 
-<?php
-require_once  '../pages/header.php';
-?>
-
 <style>
     .main{
       height: 2100px;
