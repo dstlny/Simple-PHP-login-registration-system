@@ -1,7 +1,6 @@
 <?php
 require_once  '../pages/header.php';
-if(isset($_SESSION['adminBool']) && $_SESSION['adminBool'] == TRUE){
-}
+(!isset($_SESSION['adminBool'])) ? header ('location: ../pages/Index2.php') : null;
 ?>
 
 <style>
