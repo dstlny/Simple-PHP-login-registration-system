@@ -1,11 +1,7 @@
 <?php
+require_once  '../pages/header.php';
 if(isset($_SESSION['adminBool']) && $_SESSION['adminBool'] == TRUE){
-    header ('location: ../requires/AmendProduct.php');
 }
-?>
-
-<?php
-    require_once  '../pages/header.php';
 ?>
 
 <style>
@@ -102,10 +98,9 @@ if(isset($_SESSION['adminBool']) && $_SESSION['adminBool'] == TRUE){
               <?php
                 require_once  '../pages/dbcon/init.php';       
                 $id=$_GET['id'];
-                $_SESSION['id'] =$id;
+                $_SESSION['id'] = $id;
                 $query = "SELECT * FROM webProducts WHERE ProductID = '$id'";
                 $result = mysqli_query($connection, $query);
-                $rows = mysqli_num_rows($result);
                 echo "<br><b style=\"color: black; font-size: 30px;\">Current details in database about the product you have selected to amend</b><br><br>";
                 while ($row = mysqli_fetch_assoc($result)) {
                        echo '<table><tr><th>Product ID</th><th>Product Name</th><th>Product Price</th><th>Product Image</th><th>Product Category</th><th>Product Description</th></tr>';
@@ -114,38 +109,48 @@ if(isset($_SESSION['adminBool']) && $_SESSION['adminBool'] == TRUE){
                        echo "<img src='../images/products/" . $row['ProductImage'] . "'/></td>";
                        echo '<td>'.$row['ProductCategory'].'</td><td>'.$row['ProductDescription'].'</td></tr>';
                        echo '</table>';
+                       $_SESSION['name'] = $row['ProductName'];
+                       $_SESSION['price'] = $row['ProductPrice'];
+                       $_SESSION['cat'] = $row['ProductCategory'];
+                       $_SESSION['desc'] = $row['ProductDescription'];
+                       $_SESSION['img'] = $row['ProductImage'];
                 } 
                 
                 echo '<br><br>';
                 echo "<div style=\"padding: 20px; border: 1px solid gray;\"><b style=\"color: black; font-size: 30px;\">New Product Details:</b><br><br>";
                 echo '<form method="post" action="updateAmend.php">';?>
-                <?php  echo '<input type="hidden" name="txtID" '?><?php echo 'value="'?><?php if(isset($_GET['id'])){ echo $_GET['id']; } echo '">';?>
+                <?php echo '<input type="hidden" name="txtID" '?><?php echo 'value="'?><?php if(isset($_GET['id'])){ echo $_GET['id']; } echo '">';?>
                 <?php echo '<table><tr><th>Product Name</th><th>Product Price</th><th>Product Image</th><th>Product Category</th><th>Product Description</th></tr>';?>
-                <?php  echo '<td><textarea name="txtNewName" placeholder="New product name..." rows="4" cols="20"></textarea>';?>
+                <?php echo '<td><textarea name="txtNewName" placeholder="New product name..." rows="4" cols="20">';?><?php echo $_SESSION['name'];?>
+                <?php echo "</textarea>";?>
                 <?php
                     if(isset($_SESSION['errors']['error2'])){
                        echo $_SESSION['errors']['error2'];
                     }
                 echo "</td>";?>
-                <?php  echo "<td><textarea name=\"txtNewPrice\" placeholder=\"New product price...\" rows=\"4\" cols=\"20\">"?><?php if(isset($_SESSION['name'])){echo $_SESSION['name'];}  echo"</textarea>";?>
+                <?php  echo "<td><textarea name=\"txtNewPrice\" placeholder=\"New product price...\" rows=\"4\" cols=\"20\">";?><?php echo $_SESSION['price'];?>
+                <?php echo "</textarea>";?>
                 <?php
                     if(isset($_SESSION['errors']['error3'])){
                        echo $_SESSION['errors']['error3'];
                     }
                 echo "</td>";?>
-                <?php  echo "<td><textarea name=\"txtNewImage\" placeholder=\"New product image name...\" rows=\"4\" cols=\"20\">"?><?php if(isset($_SESSION['image'])){echo $_SESSION['image'];}  echo"</textarea>";?>
+                <?php  echo "<td><textarea name=\"txtNewImage\" placeholder=\"New product image name...\" rows=\"4\" cols=\"20\">";?><?php echo $_SESSION['img'];?>
+                <?php echo "</textarea>";?>
                 <?php
                     if(isset($_SESSION['errors']['error6'])){
                        echo $_SESSION['errors']['error6'];
                     }
                 echo "</td>";?>
-                <?php  echo "<td><textarea name=\"txtNewCategory\" placeholder=\"New product category...\" rows=\"4\" cols=\"20\">"?><?php if(isset($_SESSION['category'])){echo $_SESSION['category'];}  echo"</textarea>";?>
+                <?php  echo "<td><textarea name=\"txtNewCategory\" placeholder=\"New product category...\" rows=\"4\" cols=\"20\">";?><?php echo $_SESSION['cat'];?>
+                <?php echo "</textarea>";?>
                 <?php
                     if(isset($_SESSION['errors']['error4'])){
                        echo $_SESSION['errors']['error4'];
                     }
                 echo "</td>";?>
-                <?php  echo "<td><textarea name=\"txtNewDesc\" placeholder=\"New product description...\" rows=\"4\" cols=\"20\">"?><?php if(isset($_SESSION['description'])){echo $_SESSION['description'];}  echo"</textarea>";?>
+                <?php  echo "<td><textarea name=\"txtNewDesc\" placeholder=\"New product description...\" rows=\"4\" cols=\"20\">";?><?php echo $_SESSION['desc'];?>
+                <?php echo "</textarea>";?>
                 <?php
                     if(isset($_SESSION['errors']['error5'])){
                        echo $_SESSION['errors']['error5'];
