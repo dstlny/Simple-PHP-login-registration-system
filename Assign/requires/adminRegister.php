@@ -1,6 +1,4 @@
 <?php
-require_once  '../pages/dbcon/init.php';
-
 if(isset($_POST['register'])){
 
     if(empty(trim($_POST['txtAdminUser'])) && empty(trim($_POST['txtPass'])) && empty(trim($_POST['txtPassRe'])) && empty(trim($_POST['txtEmail']))){
