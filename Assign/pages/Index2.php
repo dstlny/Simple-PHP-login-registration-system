@@ -1,13 +1,7 @@
 <?php
 require_once  'header.php';
-if(isset($_GET['id'])){
-  $id = $_GET['id'];
-  array_push($_SESSION['fav'], $id);
-} elseif(!isset($_SESSION['fav'])){
-    
-} else{
-    
-}
+isset($_GET['id']) ? $id = $_GET['id'] : null;
+isset($_GET['id']) ? array_push($_SESSION['fav'], $id) : null;
 ?>
 
 <script> history.replaceState({}, null, "../pages/Index2.php"); </script>
