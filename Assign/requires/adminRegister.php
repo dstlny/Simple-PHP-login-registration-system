@@ -1,6 +1,7 @@
 <?php
-if(isset($_POST['register'])){
+require_once  '../pages/dbcon/init.php';
 
+if(isset($_POST['register'])){
     if(empty(trim($_POST['txtAdminUser'])) && empty(trim($_POST['txtPass'])) && empty(trim($_POST['txtPassRe'])) && empty(trim($_POST['txtEmail']))){
          $error_check['empty'] = "<br><b style=\"color: red\">All fields are empty!</b>";
          $_SESSION['errors'] = $error_check;
