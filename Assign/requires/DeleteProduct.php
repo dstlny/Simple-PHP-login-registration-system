@@ -11,12 +11,5 @@ $query="DELETE FROM webProducts WHERE ProductID='$id'";
 //run $query
 mysqli_query($connection, $query);
 
-// check to see if any rows were affected
-if (mysqli_affected_rows($connection) > 0) {
-      //If yes , return to calling page(stored in the server variables)
-      header("location: adminPanel.php");
-} else {
-      header("location: adminPanel.php");
-      exit ;
-}		
+(mysqli_affected_rows($connection) > 0) ? header("location: adminPanel.php") : header("location: adminPanel.php");		
 ?>
