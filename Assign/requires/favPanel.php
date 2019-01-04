@@ -2,7 +2,7 @@
 require_once  '../pages/header.php';
 empty($_SESSION['fav']) ? header('location: ../pages/Index2.php') : null;
 ?>
-
+//Keeps URL same regardless of what user does on page.
 <script> history.replaceState({}, null, "../requires/favPanel.php"); </script>
 
 <style>
@@ -136,16 +136,20 @@ empty($_SESSION['fav']) ? header('location: ../pages/Index2.php') : null;
                     if($_GET['id']){
                         $index = array_search($_GET['id'], $_SESSION['fav']);
                         array_splice($_SESSION['fav'], $index, 1);
-                        error_reporting(0);
-                        header("Location: ".$_SERVER['PHP_SELF']);
+                        /*
+                         * refresh page so 
+                         * `empty($_SESSION['fav']) ? header('location: ../pages/Index2.php') : null;` will execute again.
+                         * If nothing in $_SESSION['fav'] it'll kick the use to the Index page else stay.
+                         */
+                        echo '<meta http-equiv="refresh" content="0;">';
                     }
-                   
+                    
                     //Clears all favourites, redirects to Index page.
                     if(isset($_GET['ClearAll'])){
                         $_SESSION['fav'] = array();
                         echo '<meta http-equiv="refresh" content="0;url=../pages/Index2.php">';
                     }
-                 
+
                     echo '<table>';
                     echo '<tr><th>Product Name</th><th>Product Price</th><th>Product Image</th><th>Product Category</th><th>Product Description</th><th><a style="color: black;" href="?ClearAll">Delete All</a></th></tr>';
                     foreach($_SESSION['fav'] as $key=>$value){
