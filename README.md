@@ -3,6 +3,7 @@
 - Registration System (Admin users register via Admin Panel).
 - Inventory management system, allowing the updating, creation and amending of new or already existing products (Admin users only).
 - Favourites System (Normal users only, based on a session array).
+- Users can only access this favourites system if they have saved ONE or MORE products, otherwise they'll be redirected to Index.
 - Easily maintainable.
 - Core CRUD funcitionality.
 - Easily customisable layout.
